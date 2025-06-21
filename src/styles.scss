@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Arial, sans-serif; }
+.cursor { cursor: pointer; }
+.gradient-title {
+  font-size: 25px;
+  font-weight: 900;
+   background: linear-gradient(to right, #2196f3, #71b0e4, #a04d6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mat-body,
+.mat-body-1,
+.mat-typography .mat-body,
+.mat-typography .mat-body-1,
+.mat-typography {
+  letter-spacing: normal !important;
+  line-height: normal !important;
+}

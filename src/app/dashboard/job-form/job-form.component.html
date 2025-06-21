@@ -1,0 +1,38 @@
+<h3 style="color: rgb(65, 65, 231); font-size: 25px; font-weight: 500;" >{{ isEditMode ? 'Edit Job Application' : 'Add Job Application' }}</h3>
+
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form-custom">
+
+  <div class="form-group">
+    <label for="company">Company <span style="color: red;">*</span></label>
+    <input id="company" type="text" formControlName="company" placeholder="Company name" />
+  </div>
+
+  <div class="form-group">
+    <label for="role">Role <span style="color: red;">*</span></label>
+    <input id="role" type="text" formControlName="role" placeholder="Role applied for" />
+  </div>
+
+  <div class="form-group">
+    <label for="application_date">Application Date <span style="color: red;">*</span></label>
+    <input id="application_date" type="date" formControlName="application_date" />
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status <span style="color: red;">*</span></label>
+    <select id="status" formControlName="status">
+      <option value="" disabled>Select status</option>
+      <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="notes">Notes</label>
+    <textarea id="notes" formControlName="notes" placeholder="Optional notes"></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" [disabled]="jobForm.invalid">
+      {{ isEditMode ? 'Update' : 'Submit' }}
+    </button>
+  </div>
+</form>

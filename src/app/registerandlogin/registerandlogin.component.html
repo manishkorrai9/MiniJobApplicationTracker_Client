@@ -1,0 +1,51 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <h1 class="gradient-title">Job Application Tracker</h1>
+    <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
+
+    <form (ngSubmit)="onSubmit()" #f="ngForm" autocomplete="off">
+      <div *ngIf="!isLogin" class="fade">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Name</mat-label>
+          <input
+                 matInput type="text"
+                 [(ngModel)]="user.name"
+                 name="name"
+                 placeholder="Enter Name"
+                 autocomplete="new-name"
+                 required>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input 
+               matInput type="email"
+               [(ngModel)]="user.email"
+               name="email"
+               placeholder="Enter Email"
+               autocomplete="new-email"
+               required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input 
+               matInput type="password"
+               [(ngModel)]="user.password"
+               name="password"
+               placeholder="Enter Password"
+               autocomplete="new-password"
+               required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="full-width">
+        {{ isLogin ? 'Login' : 'Register' }}
+      </button>
+    </form>
+
+    <p class="toggle-link" (click)="toggleMode(f)">
+      {{ isLogin ? "Don't have an account? Register" : "Already registered? Login" }}
+    </p>
+  </mat-card>
+</div>

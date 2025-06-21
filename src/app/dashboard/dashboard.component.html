@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+      <!-- Top Header -->
+      <header class="dashboard-header">
+            <div class="title gradient-title">Job Tracker Application</div>
+            <div class="header-actions" style="color:red">
+                  <button mat-icon-button matTooltip="Sign Out" (click)="logout()">
+                        <mat-icon>logout</mat-icon>
+                  </button>
+            </div>
+      </header>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+            <div class="card colr-skyB">Total: {{ stats.total }}</div>
+            <div class="card colr-blue">Interview: {{ stats.interview }}</div>
+            <div class="card colr-green">Offered: {{ stats.offered }}</div>
+            <div class="card colr-red">Rejected: {{ stats.rejected }}</div>
+            <div class="card colr-yellow">On Hold: {{ stats.hold }}</div>
+      </div>
+
+      <!-- User Name and Add Job Modal -->
+      <section class="dashboard-header">
+            <div class="title">Welcome, {{ username }}</div>
+            <div class="header-actions">
+                  <button mat-stroked-button color="primary" (click)="openJobForm()">
+                        <mat-icon>add</mat-icon>&nbsp;Add Job
+                  </button>
+            </div>
+      </section>
+
+      <!-- Job List -->
+      <ng-container *ngIf="jobList$ | async as jobList">
+            <div class="job-list">
+                  <div class="job-row header">
+                        <div>S.No</div>
+                        <div>Company</div>
+                        <div>Role</div>
+                        <div>Application Date</div>
+                        <div>Status</div>
+                        <div>Notes</div>
+                        <div>Actions</div>
+                  </div>
+
+                  <div class="job-row" *ngFor="let job of jobList; index as i">
+                        <div>{{ i + 1 }}</div>
+                        <div>{{ job.company_name }}</div>
+                        <div>{{ job.job_title }}</div>
+                        <div>{{ job.application_date | date: 'mediumDate' }}</div>
+                        <div>{{ job.status }}</div>
+                        <div>{{ job.notes || '' }}</div>
+                        <div>
+                              <button mat-icon-button color="primary" (click)="editJob(job)" matTooltip="Edit">
+                                    <mat-icon>edit</mat-icon>
+                              </button>
+
+                              <button mat-icon-button color="warn" (click)="deleteJob(job.id)" matTooltip="Delete">
+                                    <mat-icon>delete</mat-icon>
+                              </button>
+                        </div>
+
+                  </div>
+            </div>
+      </ng-container>
+
+
+</div>
