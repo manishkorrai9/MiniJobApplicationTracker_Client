@@ -18,11 +18,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe'; 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    JobFormComponent
+    JobFormComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FormsModule,
+    
   ]
 })
 export class DashboardModule {}

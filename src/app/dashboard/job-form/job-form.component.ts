@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { JobService } from '../job.service';
+import { JobService } from '../services/job.service';
 
 @Component({
   selector: 'app-job-form',

@@ -21,6 +21,9 @@
       <!-- User Name and Add Job Modal -->
       <section class="dashboard-header">
             <div class="title">Welcome, {{ username }}</div>
+            <div> 
+                  <input type="text" class="serch-box" placeholder="Search by Company, Role, Status, Note" [(ngModel)]="searchText" />
+            </div>
             <div class="header-actions">
                   <button mat-stroked-button color="primary" (click)="openJobForm()">
                         <mat-icon>add</mat-icon>&nbsp;Add Job
@@ -41,7 +44,7 @@
                         <div>Actions</div>
                   </div>
 
-                  <div class="job-row" *ngFor="let job of jobList; index as i">
+                   <div class="job-row " *ngFor="let job of jobList | filter:searchText; index as i">
                         <div>{{ i + 1 }}</div>
                         <div>{{ job.company_name }}</div>
                         <div>{{ job.job_title }}</div>

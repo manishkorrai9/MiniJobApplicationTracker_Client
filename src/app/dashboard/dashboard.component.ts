@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from './job.service';
+import { JobService } from './services/job.service';
 import { AuthService } from '../auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { JobFormComponent } from './job-form/job-form.component';
 import { BehaviorSubject } from 'rxjs';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,11 +15,13 @@ export class DashboardComponent implements OnInit {
   jobList$ = new BehaviorSubject<any[]>([]);
   stats = { total: 0, interview: 0, offered: 0, rejected: 0, hold: 0 };
   username: string = '';
+  searchText: string = '';
 
   constructor(
     private jobService: JobService,
     private auth: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    // private filterPipe: FilterPipe
   ) {}
 
   ngOnInit() {
